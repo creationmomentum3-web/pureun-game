@@ -1,0 +1,109 @@
+{
+  "week": 1,
+  "status": "완료",
+  "updatedAt": "2026-09-07",
+  "opening": [
+    {
+      "image": "content/week01/opening_1.webp"
+    },
+    {
+      "image": "content/week01/opening_2.webp"
+    },
+    {
+      "image": "content/week01/opening_3.webp"
+    },
+    {
+      "image": "content/week01/opening_4.webp"
+    }
+  ],
+  "round1": {
+    "title": "오늘은 누구랑 놀게 될까요?",
+    "note": "레시피를 잘 기억해주세요.<br>재료를 모두 모으면 뒤에 실루엣의 친구를 만날 수 있어요 !",
+    "recipeImage": "content/week01/recipe_r1.webp",
+    "playerImage": "content/week01/player_r1.webp",
+    "resultName": "민제 선생님",
+    "resultImage": "content/week01/friend_reveal.webp",
+    "showKeywordOverlay": false,
+    "keywords": [
+      {
+        "label": "노랑",
+        "image": "content/week01/kw_r1_1.webp",
+        "correct": true
+      },
+      {
+        "label": "나비",
+        "image": "content/week01/kw_r1_3.webp",
+        "correct": true
+      },
+      {
+        "label": "겨울",
+        "image": "content/week01/kw_r1_2.webp",
+        "correct": true
+      },
+      {
+        "label": "사진",
+        "image": "content/week01/kw_r1_4.webp",
+        "correct": true
+      }
+    ]
+  },
+  "middle": [
+    {
+      "image": "content/week01/middle_c.webp"
+    },
+    {
+      "image": "content/week01/middle_b.webp"
+    },
+    {
+      "image": "content/week01/middle_d.webp"
+    },
+    {
+      "image": "content/week01/middle_a.webp"
+    }
+  ],
+  "round2": {
+    "title": "오늘은 무엇을 하며 놀까요?",
+    "note": "네 가지 키워드를 잘 기억해주세요.<br>모두 모으면 오늘 뭐하고 놀지 마법의 레시피가 알려줄거에요 !",
+    "recipeImage": "content/week01/recipe_r2.webp",
+    "playerImage": "content/week01/player_r2.webp",
+    "resultName": "AI로 나만의 캐릭터 만들기",
+    "resultImage": "content/week01/result_activity.webp",
+    "showKeywordOverlay": true,
+    "keywords": [
+      {
+        "label": "AI",
+        "image": "content/week01/kw_r2_4.webp",
+        "correct": true
+      },
+      {
+        "label": "나",
+        "image": "content/week01/kw_r2_3.webp",
+        "correct": true
+      },
+      {
+        "label": "관심사",
+        "image": "content/week01/kw_r2_2.webp",
+        "correct": true
+      },
+      {
+        "label": "취미",
+        "image": "content/week01/kw_r2_1.webp",
+        "correct": true
+      }
+    ]
+  },
+  "ending": [
+    {
+      "image": "content/week01/ending_1.webp"
+    },
+    {
+      "image": "content/week01/ending_2.webp"
+    },
+    {
+      "image": "content/week01/ending_3.webp"
+    },
+    {
+      "image": "content/week01/ending_4.webp"
+    }
+  ]
+}

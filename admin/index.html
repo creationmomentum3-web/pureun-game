@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>푸른이 콘텐츠 관리</title>
+<link rel="icon" href="data:," />
+<link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+<!-- 로그인 -->
+<div id="gate" class="gate">
+  <div class="gate-card">
+    <h1>푸른이 콘텐츠 관리</h1>
+    <p>매주 게임에 들어갈 그림과 글을 여기서 바꿉니다.</p>
+
+    <div class="field">
+      <label for="fOwner">GitHub 계정 이름</label>
+      <input id="fOwner" type="text" placeholder="예: pureun-teacher" autocomplete="off" />
+    </div>
+    <div class="field">
+      <label for="fRepo">저장소 이름</label>
+      <input id="fRepo" type="text" placeholder="예: pureun-game" autocomplete="off" />
+    </div>
+    <div class="field">
+      <label for="fToken">접근 토큰</label>
+      <input id="fToken" type="password" placeholder="ghp_ 또는 github_pat_ 으로 시작" autocomplete="off" />
+      <div class="hint">이 브라우저에만 저장됩니다. 공용 컴퓨터에서는 작업 후 로그아웃해주세요.</div>
+    </div>
+
+    <button id="btnLogin" class="btn btn-primary" style="width:100%">들어가기</button>
+    <div id="gateMsg" class="hint" style="margin-top:12px;min-height:20px;color:var(--clay)"></div>
+  </div>
+</div>
+
+<!-- 관리 화면 -->
+<div id="app" class="hidden">
+  <header class="topbar">
+    <span class="brand">푸른이 콘텐츠 관리</span>
+    <span id="liveNow" class="live-now"><span class="live-dot"></span>불러오는 중</span>
+    <button id="btnLogout" class="btn-quiet">로그아웃</button>
+  </header>
+
+  <nav id="weeks" class="weeks" aria-label="회차 선택"></nav>
+
+  <main class="work">
+    <nav class="steps" aria-label="편집 항목">
+      <button data-go="secOpening" aria-current="true">오프닝 이야기</button>
+      <button data-go="secR1">1라운드 레시피</button>
+      <button data-go="secR1kw">1라운드 키워드</button>
+      <button data-go="secMiddle">중간 이야기</button>
+      <button data-go="secR2">2라운드 레시피</button>
+      <button data-go="secR2kw">2라운드 키워드</button>
+      <button data-go="secEnding">엔딩 이야기</button>
+    </nav>
+
+    <div>
+      <section class="panel" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <div style="margin-right:auto">
+          <h2 id="weekTitle" style="margin:0">1회차</h2>
+          <p class="sub" id="weekSub" style="margin:2px 0 0">아직 아무것도 없습니다.</p>
+        </div>
+        <button id="btnCopy" class="btn btn-sm">이전 회차 복제해오기</button>
+      </section>
+
+      <section class="panel" id="secOpening">
+        <h2>오프닝 이야기</h2>
+        <p class="sub">게임을 열면 가장 먼저 넘겨보는 그림책입니다. 대사는 그림 안에 그려 넣어주세요.</p>
+        <div class="pages" id="pagesOpening"></div>
+      </section>
+
+      <section class="panel" id="secR1">
+        <h2>1라운드 레시피</h2>
+        <p class="sub">아이들이 어떤 재료를 모아야 하는지 보여주는 화면입니다.</p>
+        <div class="row2">
+          <div>
+            <div class="field"><label>레시피 그림</label><div id="dropR1recipe"></div></div>
+            <div class="field"><label>바구니를 든 푸른이</label><div id="dropR1player"></div></div>
+          </div>
+          <div>
+            <div class="field"><label for="r1title">화면 제목</label>
+              <input id="r1title" type="text" placeholder="오늘은 누구랑 놀게 될까요?" /></div>
+            <div class="field"><label for="r1note">안내 문구</label>
+              <textarea id="r1note" rows="3" placeholder="레시피를 잘 기억해주세요."></textarea>
+              <div class="hint">줄을 바꾸려면 그냥 엔터를 누르세요.</div></div>
+            <div class="field"><label for="r1resultName">오늘 만날 친구 이름</label>
+              <input id="r1resultName" type="text" placeholder="민제 선생님" /></div>
+            <div class="field"><label>성공했을 때 등장할 친구 그림</label><div id="dropR1result"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="secR1kw">
+        <h2>1라운드 키워드</h2>
+        <p class="sub">체크한 것이 모아야 하는 재료, 체크하지 않은 것은 피해야 하는 재료입니다.
+          피할 재료를 하나도 넣지 않으면 기본 오답 그림 8개가 쓰입니다.</p>
+        <div class="kw-list" id="kwR1"></div>
+        <button class="btn btn-sm" data-addkw="1">키워드 추가</button>
+      </section>
+
+      <section class="panel" id="secMiddle">
+        <h2>중간 이야기</h2>
+        <p class="sub">1라운드가 끝나고 2라운드로 넘어가는 사이에 나옵니다.</p>
+        <div class="pages" id="pagesMiddle"></div>
+      </section>
+
+      <section class="panel" id="secR2">
+        <h2>2라운드 레시피</h2>
+        <p class="sub">1라운드와 따로 저장됩니다.</p>
+        <div class="row2">
+          <div>
+            <div class="field"><label>레시피 그림</label><div id="dropR2recipe"></div></div>
+            <div class="field"><label>친구와 함께인 푸른이</label><div id="dropR2player"></div></div>
+          </div>
+          <div>
+            <div class="field"><label for="r2title">화면 제목</label>
+              <input id="r2title" type="text" placeholder="오늘은 무엇을 하며 놀까요?" /></div>
+            <div class="field"><label for="r2note">안내 문구</label>
+              <textarea id="r2note" rows="3"></textarea></div>
+            <div class="field"><label for="r2resultName">오늘의 활동 이름</label>
+              <input id="r2resultName" type="text" placeholder="AI로 나만의 캐릭터 만들기" /></div>
+            <div class="field"><label>마지막 두루마리에 펼쳐질 그림</label><div id="dropR2result"></div></div>
+            <div class="field">
+              <label class="kw-check" style="color:var(--ink)">
+                <input id="r2overlay" type="checkbox" /> 레시피 그림 위에 키워드 4개를 겹쳐 보여주기
+              </label>
+              <div class="hint">2라운드의 빈 레시피 종이에 키워드 그림을 얹는 연출입니다.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="secR2kw">
+        <h2>2라운드 키워드</h2>
+        <p class="sub">1라운드와 완전히 따로 저장됩니다. 겹쳐 보여주기를 켰다면 여기 순서대로
+          왼쪽 위 → 오른쪽 위 → 왼쪽 아래 → 오른쪽 아래에 놓입니다.</p>
+        <div class="kw-list" id="kwR2"></div>
+        <button class="btn btn-sm" data-addkw="2">키워드 추가</button>
+      </section>
+
+      <section class="panel" id="secEnding">
+        <h2>엔딩 이야기</h2>
+        <p class="sub">게임을 마치고 보는 마지막 그림책입니다.</p>
+        <div class="pages" id="pagesEnding"></div>
+      </section>
+    </div>
+  </main>
+
+  <div class="actionbar">
+    <span class="status" id="status">준비됨</span>
+    <button id="btnSave" class="btn btn-primary">저장</button>
+    <button id="btnPreview" class="btn">미리보기</button>
+    <button id="btnPublish" class="btn btn-go">게임에 적용</button>
+  </div>
+</div>
+
+<div id="modal" class="modal">
+  <div class="modal-card">
+    <h3 id="modalTitle"></h3>
+    <p id="modalBody"></p>
+    <div class="buttons">
+      <button id="modalNo" class="btn">그만두기</button>
+      <button id="modalYes" class="btn btn-go">적용하기</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="js/github.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

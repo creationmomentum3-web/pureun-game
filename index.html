@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>푸른이의 마법 레시피</title>
+<link rel="icon" href="data:," />
+<meta name="pureum-build" content="cms-step0-content-separated" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div id="viewport">
+  <div id="game" aria-label="푸른이의 마법 레시피 게임">
+    <div id="soundControls" aria-label="사운드 조절">
+      <button id="soundToggle" type="button" aria-label="사운드 켜기/끄기">🔊</button>
+      <div class="volume-panel">
+        <input id="volumeSlider" type="range" min="0" max="100" value="32" step="1" aria-label="볼륨" />
+        <span id="volumeValue">32%</span>
+      </div>
+    </div>
+
+    <section id="mainScreen" class="screen active">
+      <div class="bg-layer bg-fallback-main" data-bg="main"></div>
+      <div class="ui-title game-title">푸른이의 마법 레시피</div>
+      <div class="ui-title game-subtitle">키워드 재료를 모아 오늘의 친구와 활동을 찾아보세요!</div>
+      <button id="mainStart" class="paper-btn">이야기 읽기</button>
+    </section>
+
+    <section id="storyScreen" class="screen">
+      <div class="story-shell">
+        <div id="storyBook" class="story-book">
+          <div class="story-header">
+            <h2 id="storyTitle">이야기</h2>
+            <div id="storyPageNum" class="story-page-num">1 / 4</div>
+          </div>
+          <div id="storyCuts" class="story-cuts"></div>
+        </div>
+        <button id="storySkip">SKIP</button>
+      </div>
+    </section>
+
+    <section id="round1IntroScreen" class="screen">
+      <div class="bg-layer bg-fallback-main" data-bg="main"></div>
+      <div class="content-card">
+        <h1>오늘은 누구와 놀까?</h1>
+        <p>하늘에서 키워드가 떨어져요!</p>
+        <p>← → 방향키로 푸른이를 움직여<br>레시피에 적힌 키워드만 담아주세요.</p>
+        <p><strong>정답 키워드 8개를 모두 모으면 성공!</strong><br><strong>틀린 키워드를 3개 담으면 실패해요.</strong></p>
+        <div class="button-row">
+          <button id="tutorialBtn" class="image-btn" style="width:300px;height:98px">
+            <img data-asset="tutorialButton" alt="게임 방법" />
+            <span class="fallback-label">게임 방법</span>
+          </button>
+          <button id="round1IntroStart" class="image-btn" style="width:300px;height:98px">
+            <img data-asset="startButton" alt="게임 시작" />
+            <span class="fallback-label">게임 시작</span>
+          </button>
+        </div>
+      </div>
+      <div id="tutorialPopup" class="tutorial-popup">
+        <div id="tutorialViewer" class="tutorial-viewer" aria-label="게임 방법 안내">
+          <img id="tutorialFallback" class="tutorial-fallback" alt="게임 방법 1" />
+          <div id="tutorialFlipRoot" class="tutorial-flip-root"></div>
+          <div id="tutorialPageGuide" class="tutorial-page-guide">1 / 5</div>
+          <button id="tutorialAdvance" class="tutorial-advance" type="button" aria-label="다음 게임 방법"></button>
+          <button id="tutorialClose" class="tutorial-close" type="button" aria-label="게임 방법 닫기">×</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="recipeScreen" class="screen">
+      <div class="bg-layer bg-fallback-recipe" data-bg="recipe"></div>
+      <div id="recipeTitle" class="ui-title recipe-title"></div>
+      <div class="recipe-wrap">
+        <img id="recipeImage" class="asset-img" alt="레시피" />
+        <div id="recipeFallback" class="recipe-fallback hidden"></div>
+        <div id="recipeKeywordOverlay" class="recipe-keyword-overlay hidden" aria-label="2라운드 레시피 키워드">
+</div>
+      </div>
+      <div id="recipeNote" class="recipe-note"></div>
+      <button id="recipeStartBtn" class="paper-btn recipe-start">재료 모으러 가기!</button>
+      <div id="countdown" class="countdown"></div>
+    </section>
+
+    <section id="playScreen" class="screen">
+      <div class="bg-layer bg-fallback-play" data-bg="play"></div>
+      <div id="scoreboard">
+        <div class="scoreboard-fallback"></div>
+        <img data-asset="scoreboard" alt="" />
+        <div class="score-text">
+          <div class="remaining-value"><span id="remainingCorrect">20</span></div>
+          <div class="life-value"><span id="hearts"></span></div>
+        </div>
+      </div>
+      <div id="progressPanel" aria-label="수집 레시피 현황">
+        <img id="recipeScoreboardImg" data-asset="recipeScoreboard" alt="레시피" />
+        <div id="recipeStatusList"></div>
+      </div>
+      <div id="catchHitbox"></div>
+      <div id="player">
+        <img id="playerImg" alt="플레이어" />
+        <div id="playerFallback" class="player-placeholder hidden"></div>
+      </div>
+      <div id="speech"></div>
+      <button id="pauseBtn" type="button" aria-label="일시정지">❚❚</button>
+      <div id="pauseOverlay" class="pause-overlay">
+        <div class="pause-panel">
+          <div class="pause-title">일시정지</div>
+          <div class="pause-btn-row">
+            <button id="pauseRetryBtn" type="button" class="pause-btn-secondary">다시하기</button>
+            <button id="pauseResumeBtn" type="button">계속하기</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="failScreen" class="screen">
+      <div class="bg-layer bg-fallback-fail" data-bg="fail"></div>
+      <div class="result-center" style="top:auto;bottom:90px;transform:translateX(-50%);">
+        <button id="retryBtn" class="image-btn" style="width:360px;height:100px">
+          <img data-asset="retryButton" alt="다시 하기" />
+          <span class="fallback-label">다시 하기</span>
+        </button>
+      </div>
+    </section>
+
+    <section id="round1ClearScreen" class="screen">
+      <div class="bg-layer bg-fallback-clear" data-bg="clear1"></div>
+      <button id="toRound1Reveal" class="image-btn" aria-label="다음 연출 보기">
+        <img data-asset="nextButton" alt="다음으로" />
+        <span class="fallback-label">다음으로</span>
+      </button>
+    </section>
+
+    <section id="round1RevealScreen" class="screen">
+      <div id="round1RevealSceneBg"></div>
+      <img id="round1RevealSnowman" data-asset="round1RevealSnowman" alt="솥에서 솟아오르는 눈사람 친구" />
+      <div id="round1RevealBubbles" aria-hidden="true"></div>
+      <button id="round1RevealNext" class="image-btn" aria-label="다음 이야기">
+        <img data-asset="nextButton" alt="다음으로" />
+        <span class="fallback-label">다음으로</span>
+      </button>
+    </section>
+
+    <section id="round2ClearScreen" class="screen">
+      <div class="bg-layer bg-fallback-clear" data-bg="clear2"></div>
+      <div class="result-center" style="top:auto;bottom:70px;transform:translateX(-50%);">
+        <button id="round2Next" class="image-btn">
+          <img data-asset="nextButton" alt="결과 보기" />
+          <span class="fallback-label">결과 보기</span>
+        </button>
+      </div>
+    </section>
+
+    <section id="finalResultScreen" class="screen">
+      <div class="bg-layer bg-fallback-clear" data-bg="clear2"></div>
+      <div class="result-ritual">
+        <div id="cauldron" class="cauldron"></div>
+        <div id="scroll" class="scroll">
+          <div id="activityReveal" class="activity-reveal">
+            <div class="activity-image">
+              <img id="activityImage" class="asset-img" alt="오늘의 활동" />
+              <div id="activityFallback" class="activity-fallback hidden">AI로 나만의<br>캐릭터 만들기</div>
+            </div>
+            <div style="font-size:30px;font-weight:900">짜잔! 오늘 함께할 활동을 찾았어요!</div>
+            <button id="finalNext" class="paper-btn">다음 이야기</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="endScreen" class="screen">
+      <div class="bg-layer bg-fallback-end" data-bg="end"></div>
+      <div class="end-actions" style="bottom:38px;">
+        <button id="replayGameBtn" class="image-btn">
+          <img data-asset="retryButton" alt="다시하기" />
+          <span class="fallback-label">다시하기</span>
+        </button>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div id="bootLoading" style="position:fixed;inset:0;display:flex;align-items:center;
+  justify-content:center;background:#1b1408;color:#ffe9b0;font-size:28px;z-index:9999">
+  마법 레시피를 불러오는 중...
+</div>
+<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
+<script src="js/assets-fixed.js"></script>
+<script src="js/game.js"></script>
+<script src="js/content-loader.js"></script>
+</body>
+</html>
