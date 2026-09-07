@@ -4,19 +4,19 @@
   "updatedAt": "2026-09-07",
   "opening": [
     {
+      "image": "content/week01/img-1788770711908-0c4d.webp"
+    },
+    {
       "image": "content/week01/img-1788770721210-d9w5.webp"
+    },
+    {
+      "image": "content/week01/img-1788770724070-nv7l.webp"
     },
     {
       "image": "content/week01/img-1788770727335-sdhh.webp"
     },
     {
-      "image": "content/week01/img-1788770711908-0c4d.webp"
-    },
-    {
       "image": "content/week01/img-1788770729826-gh0h.webp"
-    },
-    {
-      "image": "content/week01/img-1788770724070-nv7l.webp"
     }
   ],
   "round1": {
@@ -52,16 +52,19 @@
   },
   "middle": [
     {
-      "image": "content/week01/middle_c.webp"
+      "image": "content/week01/img-1788770946351-tmsa.webp"
     },
     {
-      "image": "content/week01/middle_b.webp"
+      "image": "content/week01/img-1788770953288-ul7t.webp"
     },
     {
-      "image": "content/week01/middle_d.webp"
+      "image": "content/week01/img-1788770956452-08gt.webp"
     },
     {
-      "image": "content/week01/middle_a.webp"
+      "image": "content/week01/img-1788770958609-7nu9.webp"
+    },
+    {
+      "image": "content/week01/img-1788770962141-wl7z.webp"
     }
   ],
   "round2": {
@@ -97,16 +100,16 @@
   },
   "ending": [
     {
-      "image": "content/week01/ending_1.webp"
+      "image": "content/week01/img-1788771058569-gy2z.webp"
     },
     {
-      "image": "content/week01/ending_2.webp"
+      "image": "content/week01/img-1788771061013-23zc.webp"
     },
     {
-      "image": "content/week01/ending_3.webp"
+      "image": "content/week01/img-1788771063673-otcc.webp"
     },
     {
-      "image": "content/week01/ending_4.webp"
+      "image": "content/week01/img-1788771068338-3kd7.webp"
     }
   ]
 }
