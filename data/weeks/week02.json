@@ -149,5 +149,15 @@
     {
       "image": "content/week02/img-1789276193906-2hxs.webp"
     }
-  ]
+  ],
+  "endScreen": {
+    "image": "content/week02/img-1789286576868-1tk9.webp",
+    "text": "AI로 나만의 캐릭터 만들기 !\n시작해볼까요?",
+    "hasRetryButton": true,
+    "textPos": {
+      "x": 0,
+      "y": 0,
+      "size": 72
+    }
+  }
 }
