@@ -1,0 +1,115 @@
+{
+  "week": 2,
+  "status": "완료",
+  "updatedAt": "2026-09-13",
+  "opening": [
+    {
+      "image": "content/week02/img-1789275525679-2w8v.webp"
+    },
+    {
+      "image": "content/week02/img-1789275530471-g673.webp"
+    },
+    {
+      "image": "content/week02/img-1789275522812-wj0l.webp"
+    },
+    {
+      "image": "content/week02/img-1789275532398-g6q6.webp"
+    },
+    {
+      "image": "content/week02/img-1789275528263-575w.webp"
+    }
+  ],
+  "round1": {
+    "title": "오늘은 누구랑 놀게 될까요?",
+    "note": "레시피를 잘 기억해주세요.<br>재료를 모두 모으면 뒤에 실루엣의 친구를 만날 수 있어요 !",
+    "recipeImage": "content/week01/recipe_r1.webp",
+    "playerImage": "content/week01/player_r1.webp",
+    "resultName": "민제 선생님",
+    "resultImage": "content/week01/friend_reveal.webp",
+    "showKeywordOverlay": false,
+    "keywords": [
+      {
+        "label": "노랑",
+        "image": "content/week01/kw_r1_1.webp",
+        "correct": true
+      },
+      {
+        "label": "나비",
+        "image": "content/week01/kw_r1_3.webp",
+        "correct": true
+      },
+      {
+        "label": "겨울",
+        "image": "content/week01/kw_r1_2.webp",
+        "correct": true
+      },
+      {
+        "label": "사진",
+        "image": "content/week01/kw_r1_4.webp",
+        "correct": true
+      }
+    ]
+  },
+  "middle": [
+    {
+      "image": "content/week01/img-1788770946351-tmsa.webp"
+    },
+    {
+      "image": "content/week01/img-1788770953288-ul7t.webp"
+    },
+    {
+      "image": "content/week01/img-1788770956452-08gt.webp"
+    },
+    {
+      "image": "content/week01/img-1788770958609-7nu9.webp"
+    },
+    {
+      "image": "content/week01/img-1788770962141-wl7z.webp"
+    }
+  ],
+  "round2": {
+    "title": "오늘은 무엇을 하며 놀까요?",
+    "note": "네 가지 키워드를 잘 기억해주세요.<br>모두 모으면 오늘 뭐하고 놀지 마법의 레시피가 알려줄거에요 !",
+    "recipeImage": "content/week01/recipe_r2.webp",
+    "playerImage": "content/week01/player_r2.webp",
+    "resultName": "AI로 나만의 캐릭터 만들기",
+    "resultImage": "content/week01/result_activity.webp",
+    "showKeywordOverlay": true,
+    "keywords": [
+      {
+        "label": "AI",
+        "image": "content/week01/kw_r2_4.webp",
+        "correct": true
+      },
+      {
+        "label": "나",
+        "image": "content/week01/kw_r2_3.webp",
+        "correct": true
+      },
+      {
+        "label": "관심사",
+        "image": "content/week01/kw_r2_2.webp",
+        "correct": true
+      },
+      {
+        "label": "취미",
+        "image": "content/week01/kw_r2_1.webp",
+        "correct": true
+      }
+    ]
+  },
+  "ending": [
+    {
+      "image": "content/week01/img-1788771058569-gy2z.webp"
+    },
+    {
+      "image": "content/week01/img-1788771061013-23zc.webp"
+    },
+    {
+      "image": "content/week01/img-1788771063673-otcc.webp"
+    },
+    {
+      "image": "content/week01/img-1788771068338-3kd7.webp"
+    }
+  ]
+}
