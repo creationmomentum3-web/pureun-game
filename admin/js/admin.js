@@ -23,6 +23,16 @@ let dirty = false;
 let busy = false;
 
 /* ---------------------------------------------------------------- 도우미 */
+/* 예전에 저장한 회차에는 마지막 화면 정보가 없으므로 기본값을 채워준다 */
+function normalizeEnd() {
+  if (!draft.endScreen) draft.endScreen = { image: "", text: "", hasRetryButton: false };
+  const e = draft.endScreen;
+  if (!e.textPos) e.textPos = { x: 0, y: 0, size: 72 };
+  if (typeof e.textPos.x !== "number") e.textPos.x = 0;
+  if (typeof e.textPos.y !== "number") e.textPos.y = 0;
+  if (typeof e.textPos.size !== "number") e.textPos.size = 72;
+}
+
 function blankWeek(n) {
   return {
     week: n, status: "미작성", updatedAt: "",
@@ -35,7 +45,8 @@ function blankWeek(n) {
       title: "", note: "", recipeImage: "", playerImage: "",
       resultName: "", resultImage: "", showKeywordOverlay: true, keywords: []
     },
-    endScreen: { image: "", text: "", hasRetryButton: false }
+    endScreen: { image: "", text: "", hasRetryButton: false,
+      textPos: { x: 0, y: 0, size: 72 } }
   };
 }
 
@@ -161,7 +172,7 @@ async function openWeek(n) {
     const file = await GH.get("data/weeks/week" + pad(n) + ".json");
     draft = file && file.json ? file.json : blankWeek(n);
     draft.week = n;
-    if (!draft.endScreen) draft.endScreen = { image: "", text: "" };
+    normalizeEnd();
 
     const local = localStorage.getItem("pureum.draft." + n);
     if (local) {
@@ -172,7 +183,7 @@ async function openWeek(n) {
       });
       if (use) {
         draft = JSON.parse(local); draft.week = n;
-        if (!draft.endScreen) draft.endScreen = { image: "", text: "" };
+        normalizeEnd();
       }
       else localStorage.removeItem("pureum.draft." + n);
       dirty = use;
@@ -210,7 +221,9 @@ function renderAll() {
   imageSlot("#dropR2recipe", () => draft.round2.recipeImage, (v) => draft.round2.recipeImage = v);
   imageSlot("#dropR2player", () => draft.round2.playerImage, (v) => draft.round2.playerImage = v);
   imageSlot("#dropR2result", () => draft.round2.resultImage, (v) => draft.round2.resultImage = v);
-  imageSlot("#dropEndBg", () => draft.endScreen.image, (v) => draft.endScreen.image = v);
+  imageSlot("#dropEndBg", () => draft.endScreen.image, (v) => {
+    draft.endScreen.image = v; drawEndPreview();
+  });
 
   bindText("#r1title", () => draft.round1.title, (v) => draft.round1.title = v);
   bindText("#r1note", () => draft.round1.note.replace(/<br\s*\/?>/g, "\n"),
@@ -220,11 +233,15 @@ function renderAll() {
   bindText("#r2note", () => draft.round2.note.replace(/<br\s*\/?>/g, "\n"),
     (v) => draft.round2.note = v.replace(/\n/g, "<br>"));
   bindText("#r2resultName", () => draft.round2.resultName, (v) => draft.round2.resultName = v);
-  bindText("#endText", () => draft.endScreen.text, (v) => draft.endScreen.text = v);
+  bindText("#endText", () => draft.endScreen.text, (v) => {
+    draft.endScreen.text = v; drawEndPreview();
+  });
 
   const ehb = $("#endHasBtn");
   ehb.checked = !!draft.endScreen.hasRetryButton;
   ehb.onchange = () => { draft.endScreen.hasRetryButton = ehb.checked; markDirty(); };
+
+  bindEndPosition();
 
   const ov = $("#r2overlay");
   ov.checked = draft.round2.showKeywordOverlay !== false;
@@ -301,6 +318,64 @@ function resolveUrl(p) {
   const c = GH.config();
   return "https://raw.githubusercontent.com/" + c.owner + "/" + c.repo + "/" + c.branch + "/" + p;
 }
+
+/* ---- 마지막 화면: 글자 위치 맞추기 ---- */
+const END_BASE_TOP = 190;     // 게임 CSS 의 기본 위치 (1920x1080 기준)
+const END_BOX_W = 1000, END_BOX_H = 210;
+
+function bindEndPosition() {
+  const pos = draft.endScreen.textPos;
+  const rows = [
+    ["#endPosY", "#endPosYv", "y"],
+    ["#endPosX", "#endPosXv", "x"],
+    ["#endSize", "#endSizev", "size"]
+  ];
+  rows.forEach(([sel, out, key]) => {
+    const el = $(sel);
+    el.value = pos[key];
+    $(out).textContent = pos[key] + (key === "size" ? "" : "px");
+    el.oninput = () => {
+      pos[key] = Number(el.value);
+      $(out).textContent = pos[key] + (key === "size" ? "" : "px");
+      drawEndPreview();
+      markDirty();
+    };
+  });
+  $("#endReset").onclick = () => {
+    draft.endScreen.textPos = { x: 0, y: 0, size: 72 };
+    bindEndPosition();
+    drawEndPreview();
+    markDirty();
+  };
+  drawEndPreview();
+}
+
+function drawEndPreview() {
+  const box = $("#endPreview");
+  if (!box) return;
+  const e = draft.endScreen;
+  box.classList.toggle("has-bg", !!e.image);
+  box.style.backgroundImage = e.image ? 'url("' + resolveUrl(e.image) + '")' : "";
+
+  const scale = box.clientWidth / 1920;     // 게임 무대를 이 상자 크기로 축소
+  const pos = e.textPos;
+  const t = $("#endPreviewText");
+  t.textContent = e.text || "";
+  t.style.width = (END_BOX_W * scale) + "px";
+  t.style.height = (END_BOX_H * scale) + "px";
+  t.style.top = ((END_BASE_TOP + pos.y) * scale) + "px";
+  t.style.transform = "translateX(calc(-50% + " + (pos.x * scale) + "px))";
+
+  // 게임과 똑같이, 넘치면 글자를 줄인다
+  let size = pos.size;
+  t.style.fontSize = (size * scale) + "px";
+  while (size > 28 && (t.scrollHeight > t.clientHeight + 1 || t.scrollWidth > t.clientWidth + 1)) {
+    size -= 3;
+    t.style.fontSize = (size * scale) + "px";
+  }
+}
+
+window.addEventListener("resize", () => { if (draft) drawEndPreview(); });
 
 /* ---- 이야기 페이지들 ---- */
 function renderPages(kind) {
@@ -560,7 +635,7 @@ async function copyFrom() {
     if (!file || !file.json) throw new Error(src + "회차를 읽지 못했습니다.");
     draft = JSON.parse(JSON.stringify(file.json));
     draft.week = current;
-    if (!draft.endScreen) draft.endScreen = { image: "", text: "" };
+    normalizeEnd();
     draft.status = "작성 중";
     markDirty();
     renderAll();

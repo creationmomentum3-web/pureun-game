@@ -169,6 +169,31 @@
             </div>
           </div>
         </div>
+
+        <h3 class="sub-head">글자 위치 맞추기</h3>
+        <p class="sub">막대를 움직이면 아래 그림에서 글자가 바로 움직입니다.
+          두루마리 안에 잘 들어가게 맞춰주세요.</p>
+        <div class="row2">
+          <div>
+            <div class="slider"><label for="endPosY">위아래</label>
+              <input id="endPosY" type="range" min="-260" max="420" step="5" />
+              <output id="endPosYv"></output></div>
+            <div class="slider"><label for="endPosX">좌우</label>
+              <input id="endPosX" type="range" min="-400" max="400" step="5" />
+              <output id="endPosXv"></output></div>
+            <div class="slider"><label for="endSize">글자 크기</label>
+              <input id="endSize" type="range" min="30" max="110" step="2" />
+              <output id="endSizev"></output></div>
+            <button id="endReset" class="btn btn-sm" style="margin-top:6px">가운데로 되돌리기</button>
+          </div>
+          <div>
+            <div id="endPreview" class="end-preview">
+              <div id="endPreviewText"></div>
+              <span class="end-preview-empty">배경 그림을 올리면 여기에 보입니다</span>
+            </div>
+          </div>
+        </div>
+        </div>
       </section>
     </div>
   </main>

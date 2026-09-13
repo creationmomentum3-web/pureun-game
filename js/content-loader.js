@@ -80,6 +80,7 @@
     if (end.image) ASSETS.endBg = end.image;
     GAME_CONFIG.endMessage = end.text || "";
     GAME_CONFIG.endHasButton = !!end.hasRetryButton;
+    GAME_CONFIG.endTextPos = end.textPos || { x: 0, y: 0, size: 72 };
     GAME_CONFIG.wrongKeywords = window.FIXED_WRONG_KEYWORDS;
   }
 

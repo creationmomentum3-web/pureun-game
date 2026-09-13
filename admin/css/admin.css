@@ -166,3 +166,25 @@ button{cursor:pointer}
 /* 지금 열려 있는 회차가 동시에 게임에 적용 중일 때 */
 .week.is-live.is-open{background:var(--moss-wash);border-color:var(--moss)}
 .week.is-live.is-open .n{color:var(--moss)}
+
+
+/* --- 마지막 화면: 글자 위치 맞추기 --- */
+@font-face{font-family:"ParkDahyun";src:url("../../assets/font/ParkDahyun.ttf") format("truetype");font-display:swap}
+
+.sub-head{margin:26px 0 2px;font-size:15px;font-weight:700;
+  padding-top:20px;border-top:1px solid var(--line)}
+
+.slider{display:grid;grid-template-columns:70px 1fr 58px;align-items:center;gap:10px;margin-bottom:12px}
+.slider label{font-size:13px;font-weight:600;color:var(--ink-soft)}
+.slider input[type=range]{width:100%;accent-color:var(--amethyst)}
+.slider output{font-size:13px;color:var(--ink-soft);text-align:right;font-variant-numeric:tabular-nums}
+
+.end-preview{position:relative;width:100%;aspect-ratio:16/9;border:1.5px solid var(--line);
+  border-radius:var(--radius);background:#F0EDF5 center/cover no-repeat;overflow:hidden}
+.end-preview-empty{position:absolute;inset:0;display:grid;place-items:center;
+  color:var(--ink-soft);font-size:13px;text-align:center;padding:10px}
+.end-preview.has-bg .end-preview-empty{display:none}
+#endPreviewText{position:absolute;left:50%;display:flex;align-items:center;justify-content:center;
+  text-align:center;white-space:pre-line;word-break:keep-all;overflow:hidden;
+  font-family:"ParkDahyun","Malgun Gothic",sans-serif;font-weight:900;color:#8A5E36;
+  line-height:1.24;text-shadow:0 2px 0 rgba(255,255,255,.7)}

@@ -281,7 +281,11 @@ function fitEndMessage(){
   if(!el) return;
   el.textContent=GAME_CONFIG.endMessage||"";
   if(!el.textContent) return;
-  let size=72;
+  const pos=GAME_CONFIG.endTextPos||{};
+  const ox=Number(pos.x)||0, oy=Number(pos.y)||0;
+  el.style.top=(190+oy)+"px";
+  el.style.transform="translateX(calc(-50% + "+ox+"px))";
+  let size=Number(pos.size)||72;
   el.style.fontSize=size+"px";
   while(size>28 && (el.scrollHeight>el.clientHeight || el.scrollWidth>el.clientWidth)){
     size-=3;
