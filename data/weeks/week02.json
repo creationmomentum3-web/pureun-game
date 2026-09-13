@@ -1,6 +1,6 @@
 {
   "week": 2,
-  "status": "완료",
+  "status": "작성 중",
   "updatedAt": "2026-09-13",
   "opening": [
     {
@@ -67,19 +67,19 @@
   },
   "middle": [
     {
+      "image": "content/week02/img-1789275875232-ghc0.webp"
+    },
+    {
       "image": "content/week02/img-1789275876761-ndir.webp"
+    },
+    {
+      "image": "content/week02/img-1789275877991-i7pt.webp"
     },
     {
       "image": "content/week02/img-1789275880022-m88o.webp"
     },
     {
-      "image": "content/week02/img-1789275875232-ghc0.webp"
-    },
-    {
       "image": "content/week02/img-1789275881463-y9xq.webp"
-    },
-    {
-      "image": "content/week02/img-1789275877991-i7pt.webp"
     }
   ],
   "round2": {
@@ -94,22 +94,22 @@
       {
         "label": "AI",
         "image": "content/week01/kw_r2_4.webp",
-        "correct": true
+        "correct": false
       },
       {
         "label": "나",
         "image": "content/week01/kw_r2_3.webp",
-        "correct": true
+        "correct": false
       },
       {
         "label": "관심사",
         "image": "content/week01/kw_r2_2.webp",
-        "correct": true
+        "correct": false
       },
       {
         "label": "취미",
         "image": "content/week01/kw_r2_1.webp",
-        "correct": true
+        "correct": false
       }
     ]
   },
