@@ -74,6 +74,12 @@
 
     ASSETS.round1RevealSnowman = data.round1.resultImage;
     ASSETS.activityResult = data.round2.resultImage;
+
+    // 마지막 화면 (배경은 비워두면 기본 배경을 그대로 씁니다)
+    const end = data.endScreen || {};
+    if (end.image) ASSETS.endBg = end.image;
+    GAME_CONFIG.endMessage = end.text || "";
+    GAME_CONFIG.endHasButton = !!end.hasRetryButton;
     GAME_CONFIG.wrongKeywords = window.FIXED_WRONG_KEYWORDS;
   }
 
@@ -91,6 +97,7 @@
       r.resultImage = fix(r.resultImage);
       (r.keywords || []).forEach(function (k) { k.image = fix(k.image); });
     });
+    if (data.endScreen) data.endScreen.image = fix(data.endScreen.image);
     return data;
   }
 
@@ -111,6 +118,7 @@
       urls.push(r.recipeImage, r.playerImage, r.resultImage);
       (r.keywords || []).forEach(function (k) { urls.push(k.image); });
     });
+    if (data.endScreen && data.endScreen.image) urls.push(data.endScreen.image);
     return Promise.all(urls.filter(Boolean).map(function (src) {
       return new Promise(function (done) {
         const img = new Image();

@@ -34,7 +34,8 @@ function blankWeek(n) {
     round2: {
       title: "", note: "", recipeImage: "", playerImage: "",
       resultName: "", resultImage: "", showKeywordOverlay: true, keywords: []
-    }
+    },
+    endScreen: { image: "", text: "", hasRetryButton: false }
   };
 }
 
@@ -160,6 +161,7 @@ async function openWeek(n) {
     const file = await GH.get("data/weeks/week" + pad(n) + ".json");
     draft = file && file.json ? file.json : blankWeek(n);
     draft.week = n;
+    if (!draft.endScreen) draft.endScreen = { image: "", text: "" };
 
     const local = localStorage.getItem("pureum.draft." + n);
     if (local) {
@@ -168,7 +170,10 @@ async function openWeek(n) {
         body: "이전에 이 브라우저에서 편집하다 저장하지 않은 내용이 남아 있습니다. 불러올까요?",
         yes: "불러오기", no: "버리기"
       });
-      if (use) { draft = JSON.parse(local); draft.week = n; }
+      if (use) {
+        draft = JSON.parse(local); draft.week = n;
+        if (!draft.endScreen) draft.endScreen = { image: "", text: "" };
+      }
       else localStorage.removeItem("pureum.draft." + n);
       dirty = use;
     } else {
@@ -205,6 +210,7 @@ function renderAll() {
   imageSlot("#dropR2recipe", () => draft.round2.recipeImage, (v) => draft.round2.recipeImage = v);
   imageSlot("#dropR2player", () => draft.round2.playerImage, (v) => draft.round2.playerImage = v);
   imageSlot("#dropR2result", () => draft.round2.resultImage, (v) => draft.round2.resultImage = v);
+  imageSlot("#dropEndBg", () => draft.endScreen.image, (v) => draft.endScreen.image = v);
 
   bindText("#r1title", () => draft.round1.title, (v) => draft.round1.title = v);
   bindText("#r1note", () => draft.round1.note.replace(/<br\s*\/?>/g, "\n"),
@@ -214,6 +220,11 @@ function renderAll() {
   bindText("#r2note", () => draft.round2.note.replace(/<br\s*\/?>/g, "\n"),
     (v) => draft.round2.note = v.replace(/\n/g, "<br>"));
   bindText("#r2resultName", () => draft.round2.resultName, (v) => draft.round2.resultName = v);
+  bindText("#endText", () => draft.endScreen.text, (v) => draft.endScreen.text = v);
+
+  const ehb = $("#endHasBtn");
+  ehb.checked = !!draft.endScreen.hasRetryButton;
+  ehb.onchange = () => { draft.endScreen.hasRetryButton = ehb.checked; markDirty(); };
 
   const ov = $("#r2overlay");
   ov.checked = draft.round2.showKeywordOverlay !== false;
@@ -549,6 +560,7 @@ async function copyFrom() {
     if (!file || !file.json) throw new Error(src + "회차를 읽지 못했습니다.");
     draft = JSON.parse(JSON.stringify(file.json));
     draft.week = current;
+    if (!draft.endScreen) draft.endScreen = { image: "", text: "" };
     draft.status = "작성 중";
     markDirty();
     renderAll();

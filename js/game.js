@@ -270,6 +270,23 @@ function showScreen(id){
   state.screen=id;
   applyBackgrounds();
   updateBgm();
+  if(id==="endScreen") fitEndMessage();
+}
+
+/* 마지막 화면 문구: 글이 길면 두루마리를 넘치지 않게 글자 크기를 줄인다 */
+function fitEndMessage(){
+  const scr=$("#endScreen");
+  if(scr) scr.classList.toggle("bg-has-button", !!GAME_CONFIG.endHasButton);
+  const el=$("#endMessage");
+  if(!el) return;
+  el.textContent=GAME_CONFIG.endMessage||"";
+  if(!el.textContent) return;
+  let size=72;
+  el.style.fontSize=size+"px";
+  while(size>28 && (el.scrollHeight>el.clientHeight || el.scrollWidth>el.clientWidth)){
+    size-=3;
+    el.style.fontSize=size+"px";
+  }
 }
 function cleanupTransient(){
   state.resultTimers.forEach(clearTimeout); state.resultTimers=[];

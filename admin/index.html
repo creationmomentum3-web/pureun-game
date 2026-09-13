@@ -53,6 +53,7 @@
       <button data-go="secR2">2라운드 레시피</button>
       <button data-go="secR2kw">2라운드 키워드</button>
       <button data-go="secEnding">엔딩 이야기</button>
+      <button data-go="secEnd">마지막 화면</button>
     </nav>
 
     <div>
@@ -143,6 +144,31 @@
         <h2>엔딩 이야기</h2>
         <p class="sub">게임을 마치고 보는 마지막 그림책입니다.</p>
         <div class="pages" id="pagesEnding"></div>
+      </section>
+
+      <section class="panel" id="secEnd">
+        <h2>마지막 화면</h2>
+        <p class="sub">그림책이 끝나고 「다시하기」 버튼과 함께 나오는 화면입니다.
+          두루마리에 들어갈 글은 아래에 적으면 화면에 얹혀서 나옵니다.</p>
+        <div class="row2">
+          <div class="field">
+            <label>배경 그림</label>
+            <div id="dropEndBg"></div>
+            <div class="hint">글자가 없는 배경을 넣어주세요. 비워두면 기본 배경이 쓰입니다.</div>
+          </div>
+          <div class="field">
+            <label for="endText">두루마리 문구</label>
+            <textarea id="endText" rows="4" placeholder="AI로 나만의 캐릭터 만들기 !&#10;시작해볼까요?"></textarea>
+            <div class="hint">엔터로 줄을 바꿉니다. 글이 길면 글자 크기가 자동으로 줄어듭니다.</div>
+            <div class="field" style="margin-top:18px">
+              <label class="kw-check" style="color:var(--ink)">
+                <input id="endHasBtn" type="checkbox" /> 배경 그림에 「다시하기」 버튼이 이미 그려져 있어요
+              </label>
+              <div class="hint">체크하면 게임이 버튼을 겹쳐 그리지 않고,
+                그림에 그려진 버튼을 누를 수 있게 합니다.</div>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
   </main>

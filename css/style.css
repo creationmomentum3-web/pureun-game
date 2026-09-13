@@ -815,3 +815,19 @@ html, body, button, input, textarea, select, #game {
 
 /* --- CMS: 2R 레시피 키워드 오버레이를 개수에 맞춰 배치 --- */
 #recipeKeywordOverlay{ --kw-count: 4; }
+
+
+/* --- 마지막 화면 문구 (두루마리 안쪽) --- */
+.end-message{
+  top:190px; width:1000px; height:210px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:72px; line-height:1.24; color:#8A5E36;
+  white-space:pre-line; word-break:keep-all; overflow:hidden;
+}
+.end-message:empty{display:none}
+
+
+/* 배경 그림에 「다시하기」가 이미 그려져 있을 때
+   게임 버튼은 보이지 않게 하고, 그림 위를 누를 수 있게만 남긴다 */
+#endScreen.bg-has-button .end-actions{bottom:0;height:190px}
+#endScreen.bg-has-button .end-actions .image-btn{width:620px;height:190px;opacity:0}
