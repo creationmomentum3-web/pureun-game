@@ -1,6 +1,6 @@
 {
   "week": 2,
-  "status": "작성 중",
+  "status": "완료",
   "updatedAt": "2026-09-13",
   "opening": [
     {
@@ -86,7 +86,7 @@
     "title": "오늘은 무엇을 하며 놀까요?",
     "note": "네 가지 키워드를 잘 기억해주세요.<br>모두 모으면 오늘 뭐하고 놀지 마법의 레시피가 알려줄거에요 !",
     "recipeImage": "content/week01/recipe_r2.webp",
-    "playerImage": "content/week01/player_r2.webp",
+    "playerImage": "content/week02/img-1789275997402-meow.webp",
     "resultName": "AI로 나만의 캐릭터 만들기",
     "resultImage": "content/week01/result_activity.webp",
     "showKeywordOverlay": true,
@@ -110,21 +110,44 @@
         "label": "취미",
         "image": "content/week01/kw_r2_1.webp",
         "correct": false
+      },
+      {
+        "label": "캐릭터",
+        "image": "content/week02/img-1789276094109-wfh4.webp",
+        "correct": true
+      },
+      {
+        "label": "성격",
+        "image": "content/week02/img-1789276095117-rcc1.webp",
+        "correct": true
+      },
+      {
+        "label": "취향",
+        "image": "content/week02/img-1789276096123-0ful.webp",
+        "correct": true
+      },
+      {
+        "label": "능력",
+        "image": "content/week02/img-1789276097134-oos3.webp",
+        "correct": true
       }
     ]
   },
   "ending": [
     {
-      "image": "content/week01/img-1788771058569-gy2z.webp"
+      "image": "content/week02/img-1789276183686-wt5s.webp"
     },
     {
-      "image": "content/week01/img-1788771061013-23zc.webp"
+      "image": "content/week02/img-1789276185562-zijb.webp"
     },
     {
-      "image": "content/week01/img-1788771063673-otcc.webp"
+      "image": "content/week02/img-1789276188391-7umx.webp"
     },
     {
-      "image": "content/week01/img-1788771068338-3kd7.webp"
+      "image": "content/week02/img-1789276191419-fsar.webp"
+    },
+    {
+      "image": "content/week02/img-1789276193906-2hxs.webp"
     }
   ]
 }
