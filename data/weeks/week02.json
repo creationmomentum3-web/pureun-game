@@ -1,6 +1,6 @@
 {
   "week": 2,
-  "status": "완료",
+  "status": "작성 중",
   "updatedAt": "2026-09-13",
   "opening": [
     {
@@ -24,8 +24,8 @@
     "note": "레시피를 잘 기억해주세요.<br>재료를 모두 모으면 뒤에 실루엣의 친구를 만날 수 있어요 !",
     "recipeImage": "content/week02/img-1789275643239-570q.webp",
     "playerImage": "content/week01/player_r1.webp",
-    "resultName": "민제 선생님",
-    "resultImage": "content/week01/friend_reveal.webp",
+    "resultName": "나현 선생님",
+    "resultImage": "",
     "showKeywordOverlay": false,
     "keywords": [
       {
