@@ -152,22 +152,22 @@
         "correct": false
       },
       {
-        "label": "",
+        "label": "분위기",
         "image": "content/week03/img-1790506856843-hwif.webp",
         "correct": true
       },
       {
-        "label": "",
+        "label": "소품",
         "image": "content/week03/img-1790506864276-aisa.webp",
         "correct": true
       },
       {
-        "label": "",
+        "label": "장소",
         "image": "content/week03/img-1790506866986-4fww.webp",
         "correct": true
       },
       {
-        "label": "",
+        "label": "시간",
         "image": "content/week03/img-1790506869171-pz6w.webp",
         "correct": true
       }
@@ -192,7 +192,7 @@
   ],
   "endScreen": {
     "image": "content/week02/img-1789286576868-1tk9.webp",
-    "text": "AI로 나만의 캐릭터 만들기 !\n바로 시작해볼까요?",
+    "text": "공간에서 캐릭터 살아내기 !\n바로 시작해볼까요?",
     "hasRetryButton": true,
     "textPos": {
       "x": 0,
