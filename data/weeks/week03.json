@@ -24,7 +24,7 @@
     "note": "레시피를 잘 기억해주세요.<br>재료를 모두 모으면 뒤에 실루엣의 친구를 만날 수 있어요 !",
     "recipeImage": "content/week02/img-1789275643239-570q.webp",
     "playerImage": "content/week01/player_r1.webp",
-    "resultName": "나현 선생님",
+    "resultName": "설아 선생님",
     "resultImage": "",
     "showKeywordOverlay": false,
     "keywords": [
@@ -46,21 +46,41 @@
       {
         "label": "하양",
         "image": "content/week02/img-1789275775699-u137.webp",
-        "correct": true
+        "correct": false
       },
       {
         "label": "봄",
         "image": "content/week02/img-1789275776741-gs5q.webp",
-        "correct": true
+        "correct": false
       },
       {
         "label": "고양이",
         "image": "content/week02/img-1789275777720-mfyb.webp",
-        "correct": true
+        "correct": false
       },
       {
         "label": "그림",
         "image": "content/week02/img-1789275778569-5uuq.webp",
+        "correct": false
+      },
+      {
+        "label": "여름",
+        "image": "content/week03/img-1790506793383-svt9.webp",
+        "correct": true
+      },
+      {
+        "label": "게임",
+        "image": "content/week03/img-1790506796569-nr0r.webp",
+        "correct": true
+      },
+      {
+        "label": "토끼",
+        "image": "content/week03/img-1790506798990-972s.webp",
+        "correct": true
+      },
+      {
+        "label": "핑크",
+        "image": "content/week03/img-1790506801086-e06l.webp",
         "correct": true
       }
     ]
@@ -86,7 +106,7 @@
     "title": "오늘은 무엇을 하며 놀까요?",
     "note": "네 가지 키워드를 잘 기억해주세요.<br>모두 모으면 오늘 뭐하고 놀지 마법의 레시피가 알려줄거에요 !",
     "recipeImage": "content/week01/recipe_r2.webp",
-    "playerImage": "content/week02/img-1789275997402-meow.webp",
+    "playerImage": "content/week03/img-1790506815892-4b69.webp",
     "resultName": "AI로 나만의 캐릭터 만들기",
     "resultImage": "content/week01/result_activity.webp",
     "showKeywordOverlay": true,
@@ -114,21 +134,41 @@
       {
         "label": "캐릭터",
         "image": "content/week02/img-1789276094109-wfh4.webp",
-        "correct": true
+        "correct": false
       },
       {
         "label": "성격",
         "image": "content/week02/img-1789276095117-rcc1.webp",
-        "correct": true
+        "correct": false
       },
       {
         "label": "취향",
         "image": "content/week02/img-1789276096123-0ful.webp",
-        "correct": true
+        "correct": false
       },
       {
         "label": "능력",
         "image": "content/week02/img-1789276097134-oos3.webp",
+        "correct": false
+      },
+      {
+        "label": "",
+        "image": "content/week03/img-1790506856843-hwif.webp",
+        "correct": true
+      },
+      {
+        "label": "",
+        "image": "content/week03/img-1790506864276-aisa.webp",
+        "correct": true
+      },
+      {
+        "label": "",
+        "image": "content/week03/img-1790506866986-4fww.webp",
+        "correct": true
+      },
+      {
+        "label": "",
+        "image": "content/week03/img-1790506869171-pz6w.webp",
         "correct": true
       }
     ]
