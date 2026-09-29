@@ -22,7 +22,7 @@
   "round1": {
     "title": "오늘은 누구랑 놀게 될까요?",
     "note": "레시피를 잘 기억해주세요.<br>재료를 모두 모으면 뒤에 실루엣의 친구를 만날 수 있어요 !",
-    "recipeImage": "content/week02/img-1789275643239-570q.webp",
+    "recipeImage": "",
     "playerImage": "content/week01/player_r1.webp",
     "resultName": "설아 선생님",
     "resultImage": "",
@@ -87,19 +87,19 @@
   },
   "middle": [
     {
-      "image": "content/week02/img-1789275875232-ghc0.webp"
+      "image": "content/week03/img-1790678900233-sv3i.webp"
     },
     {
-      "image": "content/week02/img-1789275876761-ndir.webp"
+      "image": "content/week03/img-1790678903038-sxny.webp"
     },
     {
-      "image": "content/week02/img-1789275877991-i7pt.webp"
+      "image": "content/week03/img-1790678898929-8w37.webp"
     },
     {
-      "image": "content/week02/img-1789275880022-m88o.webp"
+      "image": "content/week03/img-1790678905756-h9ps.webp"
     },
     {
-      "image": "content/week02/img-1789275881463-y9xq.webp"
+      "image": "content/week03/img-1790678901477-s0ok.webp"
     }
   ],
   "round2": {
