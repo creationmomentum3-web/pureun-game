@@ -173,7 +173,23 @@
       }
     ]
   },
-  "ending": [],
+  "ending": [
+    {
+      "image": "content/week03/img-1790679821795-50n2.webp"
+    },
+    {
+      "image": "content/week03/img-1790679826458-v18f.webp"
+    },
+    {
+      "image": "content/week03/img-1790679819961-gb3o.webp"
+    },
+    {
+      "image": "content/week03/img-1790679828416-5hvd.webp"
+    },
+    {
+      "image": "content/week03/img-1790679824066-l6qp.webp"
+    }
+  ],
   "endScreen": {
     "image": "content/week02/img-1789286576868-1tk9.webp",
     "text": "공간에서 캐릭터 살아내기 !\n바로 시작해볼까요?",
